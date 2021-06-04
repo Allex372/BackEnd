@@ -1,5 +1,8 @@
 const { passwordsHasher, tokenizer } = require('../helper');
 const { authService } = require('../service');
+const {errorCodes} = require('../constant');
+const {errorMessages} = require('../error');
+const errorHendler = require('../error/ErrorHendler');
 
 module.exports = {
     getUserGiveToken: async (req, res, next) => {
@@ -7,6 +10,10 @@ module.exports = {
             const { email, password } = req.body;
 
             const user = await authService.findUser(email);
+
+            if (!user){
+                throw new errorHendler(errorCodes.BAD_REQUEST, errorMessages.USER_NOT_FOUND)
+            }
 
             await passwordsHasher.compare(password, user.password);
 

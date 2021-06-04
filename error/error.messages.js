@@ -10,8 +10,9 @@ module.exports = {
     },
 
     USER_NOT_FOUND: {
-        status: 404,
-        customCode: 4041
+        status: 400,
+        customCode: 4041,
+        message: 'user not found'
     },
 
     NOT_VALID_ID: {
