@@ -6,6 +6,7 @@ const errorHendler = require('../error/ErrorHendler');
 
 module.exports = {
     getUserGiveToken: async (req, res, next) => {
+        console.log(req.body)
         try {
             const { email, password } = req.body;
 
@@ -18,6 +19,8 @@ module.exports = {
             await passwordsHasher.compare(password, user.password);
 
             const tokens = await authService.createRecord(user._id);
+
+            console.log(tokens)
 
             res.json(tokens);
         } catch (e) {

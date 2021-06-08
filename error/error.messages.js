@@ -37,7 +37,8 @@ module.exports = {
 
     TOKEN_REQUIRED: {
         status: 401,
-        customCode: 4014
+        customCode: 4014,
+        message: 'Token required'
     },
 
     NOT_VALID_TOKEN: {

@@ -7,7 +7,7 @@ router.get('/',
     productController.getAllProducts);
 
 router.post('/',
-    // checkAccessTokenMiddleware,
+    checkAccessTokenMiddleware,
     fileMiddleware.checkFile,
     productController.createProduct)
 

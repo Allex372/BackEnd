@@ -12,7 +12,7 @@ module.exports = {
             const access_token = req.get('Authorization');
 
             if (!access_token) {
-                throw new Error('Token is required');
+                throw new ErrorHendler(errorMessages.TOKEN_REQUIRED.message, errorMessages.TOKEN_REQUIRED.status);
             }
 
             jwt.verify(access_token, JWT_ACCESS, (err) => {
