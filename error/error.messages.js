@@ -1,4 +1,8 @@
 module.exports = {
+    WRONG_EMAIL_OR_PASSWORD:{
+        status:400,
+        message: 'Wrong email or password'
+    },
     TOO_SMALL_PASSWORD: {
         status: 401,
         customCode: 4011
@@ -10,7 +14,7 @@ module.exports = {
     },
 
     USER_NOT_FOUND: {
-        status: 400,
+        status: 404,
         customCode: 4041,
         message: 'user not found'
     },
@@ -37,13 +41,13 @@ module.exports = {
 
     TOKEN_REQUIRED: {
         status: 401,
-        customCode: 4014,
         message: 'Token required'
     },
 
     NOT_VALID_TOKEN: {
         status: 401,
-        customCode: 4015
+        customCode: 4015,
+        message: 'Not valid token'
     },
 
     EMAIL_EXIST: {
@@ -53,7 +57,8 @@ module.exports = {
 
     USER_NOT_ENTER_YET: {
         status: 401,
-        customCode: 4017
+        customCode: 4017,
+        message: 'User not enter yet or user not found'
     },
 
     WRONG_EMAIL_TEMPLATE: {

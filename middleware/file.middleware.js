@@ -4,7 +4,9 @@ const {constants} = require('../constant');
 module.exports = {
     checkFile: (req, res, next) => {
         try {
+            console.log(req.body)
             const {files} = req;
+            console.log(files)
 
             const photos = [];
 

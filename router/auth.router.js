@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { UserAccess, AdminAccess } = require('../constant/constants');
-const { authController } = require('../controller');
+const {UserAccess, AdminAccess} = require('../constant/constants');
+const {authController} = require('../controller');
 
-const { authMiddleware, checkRoleMiddleware } = require('../middleware');
+const {authMiddleware, checkRoleMiddleware} = require('../middleware');
 
 router.post('/',
     authController.getUserGiveToken);

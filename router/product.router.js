@@ -3,7 +3,7 @@ const { productController } = require('../controller');
 const { userMiddleware, authMiddleware: { checkAccessTokenMiddleware }, checkRoleMiddleware, fileMiddleware } = require('../middleware');
 
 router.get('/',
-    // checkAccessTokenMiddleware,
+    checkAccessTokenMiddleware,
     productController.getAllProducts);
 
 router.post('/',

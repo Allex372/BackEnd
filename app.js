@@ -2,6 +2,7 @@ const express = require('express');
 const fileUpload = require('express-fileupload');
 const path = require('path');
 const mongoose = require('mongoose');
+const morgan = require('morgan')
 const dotenv = require('dotenv');
 const cors = require('cors');
 
@@ -10,7 +11,7 @@ dotenv.config();
 
 const cronRun = require('./cron-job');
 
-const { config:{ALLOWED_ORIGIN, MONGO_URL, PORT}} = require('./config');
+const {config: {ALLOWED_ORIGIN, MONGO_URL, PORT}} = require('./config');
 
 const apiRouter = require('./router/api.router');
 
@@ -32,11 +33,12 @@ const configureCors = (origin, callback) => {
     return callback(null, true);
 };
 
-app.use(cors({ origin: configureCors }));
+app.use(cors({origin: configureCors}));
 
 app.use(fileUpload());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(morgan('dev'))
+app.use(express.urlencoded({extended: true}));
 
 app.use(express.static(path.join(process.cwd(), 'static')));
 
@@ -58,9 +60,9 @@ app.listen(PORT, () => {
 });
 
 function _conectDB() {
-    mongoose.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+    mongoose.connect(MONGO_URL, {useNewUrlParser: true, useUnifiedTopology: true});
 
-    const { connection } = mongoose;
+    const {connection} = mongoose;
     connection.on('error', (error) => {
         console.log(error);
     });
